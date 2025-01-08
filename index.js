@@ -1,8 +1,8 @@
 import express from 'express';
+// import mongoose from 'mongoose';
 const app = express();
 import { fileURLToPath } from 'url';
 import path from 'path';
-import trailers from './public/services/data.js';
 import connectDB from './src/js/connectDB.js';
 
 const port = 3000;
@@ -11,17 +11,26 @@ const __dirname = path.dirname(__filename);
 
 connectDB();
 
-let newTrailerData = [];
+// const trailerSchema = new mongoose.Schema({
+//     type: String,
+//     cleanlinessStatus: String,
+//     trailerNumber: Number,
+//     loaded: Boolean,
+//     fuelLevel: Number
+// });
 
-const trailerSchema = new mongoose.Schema({
-    type: String,
-    cleanlinessStatus: String,
-    trailerNumber: Number,
-    loaded: Boolean,
-    fuelLevel: Number
-});
+// const Trailer = mongoose.model('Trailer', trailerSchema);
 
-const Trailer = mongoose.model('Trailer', trailerSchema);
+// const addNewTrailers = async () => {
+//     try{
+//         const insertedTrailers = await Trailer.insertMany(trailers);
+//         console.log('Trailers inserted successfully:', insertedTrailers);
+//     } catch(err) {
+//         console.log('Error inserting trailers:', err.message);
+//     }
+// }
+
+// addNewTrailers();
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
