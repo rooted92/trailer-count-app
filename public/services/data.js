@@ -2,7 +2,6 @@ import { v4 as uuid } from 'uuid';
 
 let trailers = [
     {
-        id: uuid(),
         type: 'Reefer',
         cleanlinessStatus: 'Clean',
         trailerNumber: '304',
@@ -10,7 +9,6 @@ let trailers = [
         fuelLevel: 100,
     },
     {
-        id: uuid(),
         type: 'Dryvan',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '4801',
@@ -18,7 +16,6 @@ let trailers = [
         fuelLevel: 75,
     },
     {
-        id: uuid(),
         type: 'Tanker',
         cleanlinessStatus: 'Clean',
         trailerNumber: '501',
@@ -26,7 +23,6 @@ let trailers = [
         fuelLevel: 50,
     },
     {
-        id: uuid(),
         type: 'Reefer',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '305',
@@ -34,7 +30,6 @@ let trailers = [
         fuelLevel: 80,
     },
     {
-        id: uuid(),
         type: 'Dryvan',
         cleanlinessStatus: 'Clean',
         trailerNumber: '5002',
@@ -42,7 +37,6 @@ let trailers = [
         fuelLevel: 60,
     },
     {
-        id: uuid(),
         type: 'Tanker',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '602',
@@ -50,7 +44,6 @@ let trailers = [
         fuelLevel: 40,
     },
     {
-        id: uuid(),
         type: 'Reefer',
         cleanlinessStatus: 'Clean',
         trailerNumber: '306',
@@ -58,7 +51,6 @@ let trailers = [
         fuelLevel: 90,
     },
     {
-        id: uuid(),
         type: 'Dryvan',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '5351',
@@ -66,7 +58,6 @@ let trailers = [
         fuelLevel: 30,
     },
     {
-        id: uuid(),
         type: 'Tanker',
         cleanlinessStatus: 'Clean',
         trailerNumber: '503',
@@ -74,7 +65,6 @@ let trailers = [
         fuelLevel: 70,
     },
     {
-        id: uuid(),
         type: 'Reefer',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '307',
@@ -82,7 +72,6 @@ let trailers = [
         fuelLevel: 85,
     },
     {
-        id: uuid(),
         type: 'Dryvan',
         cleanlinessStatus: 'Clean',
         trailerNumber: '4803',
@@ -90,7 +79,6 @@ let trailers = [
         fuelLevel: 65,
     },
     {
-        id: uuid(),
         type: 'Tanker',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '604',
@@ -98,7 +86,6 @@ let trailers = [
         fuelLevel: 45,
     },
     {
-        id: uuid(),
         type: 'Reefer',
         cleanlinessStatus: 'Clean',
         trailerNumber: '308',
@@ -106,7 +93,6 @@ let trailers = [
         fuelLevel: 95,
     },
     {
-        id: uuid(),
         type: 'Dryvan',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '5004',
@@ -114,7 +100,6 @@ let trailers = [
         fuelLevel: 35,
     },
     {
-        id: uuid(),
         type: 'Tanker',
         cleanlinessStatus: 'Clean',
         trailerNumber: '505',
@@ -122,7 +107,6 @@ let trailers = [
         fuelLevel: 55,
     },
     {
-        id: uuid(),
         type: 'Reefer',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '309',
@@ -130,7 +114,6 @@ let trailers = [
         fuelLevel: 75,
     },
     {
-        id: uuid(),
         type: 'Dryvan',
         cleanlinessStatus: 'Clean',
         trailerNumber: '5352',
@@ -138,7 +121,6 @@ let trailers = [
         fuelLevel: 85,
     },
     {
-        id: uuid(),
         type: 'Tanker',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '606',
@@ -146,7 +128,6 @@ let trailers = [
         fuelLevel: 25,
     },
     {
-        id: uuid(),
         type: 'Reefer',
         cleanlinessStatus: 'Clean',
         trailerNumber: '310',
@@ -154,7 +135,6 @@ let trailers = [
         fuelLevel: 65,
     },
     {
-        id: uuid(),
         type: 'Dryvan',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '4805',
@@ -162,7 +142,6 @@ let trailers = [
         fuelLevel: 45,
     },
     {
-        id: uuid(),
         type: 'Tanker',
         cleanlinessStatus: 'Clean',
         trailerNumber: '507',
@@ -170,7 +149,6 @@ let trailers = [
         fuelLevel: 35,
     },
     {
-        id: uuid(),
         type: 'Reefer',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '311',
@@ -178,7 +156,6 @@ let trailers = [
         fuelLevel: 55,
     },
     {
-        id: uuid(),
         type: 'Dryvan',
         cleanlinessStatus: 'Clean',
         trailerNumber: '5006',
@@ -186,7 +163,6 @@ let trailers = [
         fuelLevel: 75,
     },
     {
-        id: uuid(),
         type: 'Tanker',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '608',
@@ -194,7 +170,6 @@ let trailers = [
         fuelLevel: 95,
     },
     {
-        id: uuid(),
         type: 'Reefer',
         cleanlinessStatus: 'Clean',
         trailerNumber: '312',
@@ -202,7 +177,6 @@ let trailers = [
         fuelLevel: 85,
     },
     {
-        id: uuid(),
         type: 'Dryvan',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '5353',
@@ -210,7 +184,6 @@ let trailers = [
         fuelLevel: 65,
     },
     {
-        id: uuid(),
         type: 'Tanker',
         cleanlinessStatus: 'Clean',
         trailerNumber: '509',
@@ -218,7 +191,6 @@ let trailers = [
         fuelLevel: 45,
     },
     {
-        id: uuid(),
         type: 'Reefer',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '313',
@@ -226,7 +198,6 @@ let trailers = [
         fuelLevel: 25,
     },
     {
-        id: uuid(),
         type: 'Dryvan',
         cleanlinessStatus: 'Clean',
         trailerNumber: '4807',
@@ -234,7 +205,6 @@ let trailers = [
         fuelLevel: 55,
     },
     {
-        id: uuid(),
         type: 'Tanker',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '610',
@@ -242,7 +212,6 @@ let trailers = [
         fuelLevel: 75,
     },
     {
-        id: uuid(),
         type: 'Reefer',
         cleanlinessStatus: 'Clean',
         trailerNumber: '314',
@@ -250,7 +219,6 @@ let trailers = [
         fuelLevel: 95,
     },
     {
-        id: uuid(),
         type: 'Dryvan',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '5008',
@@ -258,7 +226,6 @@ let trailers = [
         fuelLevel: 85,
     },
     {
-        id: uuid(),
         type: 'Tanker',
         cleanlinessStatus: 'Clean',
         trailerNumber: '511',
@@ -266,7 +233,6 @@ let trailers = [
         fuelLevel: 65,
     },
     {
-        id: uuid(),
         type: 'Reefer',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '315',
@@ -274,7 +240,6 @@ let trailers = [
         fuelLevel: 45,
     },
     {
-        id: uuid(),
         type: 'Dryvan',
         cleanlinessStatus: 'Clean',
         trailerNumber: '5354',
@@ -282,7 +247,6 @@ let trailers = [
         fuelLevel: 25,
     },
     {
-        id: uuid(),
         type: 'Tanker',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '612',
@@ -290,7 +254,6 @@ let trailers = [
         fuelLevel: 55,
     },
     {
-        id: uuid(),
         type: 'Reefer',
         cleanlinessStatus: 'Clean',
         trailerNumber: '316',
@@ -298,7 +261,6 @@ let trailers = [
         fuelLevel: 75,
     },
     {
-        id: uuid(),
         type: 'Dryvan',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '4809',
@@ -306,7 +268,6 @@ let trailers = [
         fuelLevel: 95,
     },
     {
-        id: uuid(),
         type: 'Tanker',
         cleanlinessStatus: 'Clean',
         trailerNumber: '513',
@@ -314,7 +275,6 @@ let trailers = [
         fuelLevel: 85,
     },
     {
-        id: uuid(),
         type: 'Reefer',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '317',
@@ -322,7 +282,6 @@ let trailers = [
         fuelLevel: 65,
     },
     {
-        id: uuid(),
         type: 'Dryvan',
         cleanlinessStatus: 'Clean',
         trailerNumber: '5010',
@@ -330,7 +289,6 @@ let trailers = [
         fuelLevel: 45,
     },
     {
-        id: uuid(),
         type: 'Tanker',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '614',
@@ -338,7 +296,6 @@ let trailers = [
         fuelLevel: 25,
     },
     {
-        id: uuid(),
         type: 'Reefer',
         cleanlinessStatus: 'Clean',
         trailerNumber: '318',
@@ -346,7 +303,6 @@ let trailers = [
         fuelLevel: 55,
     },
     {
-        id: uuid(),
         type: 'Dryvan',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '5355',
@@ -354,7 +310,6 @@ let trailers = [
         fuelLevel: 75,
     },
     {
-        id: uuid(),
         type: 'Tanker',
         cleanlinessStatus: 'Clean',
         trailerNumber: '515',
@@ -362,7 +317,6 @@ let trailers = [
         fuelLevel: 95,
     },
     {
-        id: uuid(),
         type: 'Reefer',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '319',
@@ -370,7 +324,6 @@ let trailers = [
         fuelLevel: 85,
     },
     {
-        id: uuid(),
         type: 'Dryvan',
         cleanlinessStatus: 'Clean',
         trailerNumber: '4811',
@@ -378,7 +331,6 @@ let trailers = [
         fuelLevel: 65,
     },
     {
-        id: uuid(),
         type: 'Tanker',
         cleanlinessStatus: 'Dirty',
         trailerNumber: '616',
