@@ -1,0 +1,26 @@
+<%- include('partials/head') %>
+  <%- include('partials/navbar') %>
+
+    <div class="container mx-auto my-16">
+      <h1 class="text-3xl font-semibold">All Trailers</h1>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
+        <% allTrailers.forEach(function(trailer) { %>
+          <a href="/trailer/<%= trailer._id %>" rel="noopener noreferrer">
+            <div class="bg-white hover:bg-slate-100 hover:scale-105 hover:-translate-y-2 shadow-md rounded-lg overflow-hidden transition-all ease-in">
+              <div class="p-4">
+                <h2 class="text-xl font-bold">
+                  <%= trailer.trailerNumber %>
+                </h2>
+                <p class="text-gray-700">
+                  <%= trailer.type %>
+                </p>
+              </div>
+            </div>
+          </a>
+
+          <% }); %>
+      </div>
+    </div>
+
+    <%- include('partials/footer') %>
