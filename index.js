@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { response } from 'express';
 import mongoose from 'mongoose';
 import { fileURLToPath } from 'url';
 import path from 'path';
@@ -27,7 +27,6 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.get('/', async (request, response) => {
     const allTrailers = await Trailer.find({});
-    console.log(allTrailers)
     response.render('home.ejs', { allTrailers })
 })
 
@@ -37,15 +36,19 @@ app.get('/all-trailers', async (request, response) => {
 });
 
 app.get('/trailer/:id', async (request, response) => {
-    const {id} = request.params;
+    const { id } = request.params;
     try {
         const trailerDetails = await Trailer.findById(id);
         response.render('trailer/show.ejs', { trailerDetails });
-    } catch(error) {
+    } catch (error) {
         console.log(error);
         throw error;
     }
 })
+
+app.get('/submit-trailer-count', (request, response) => {
+    response.render('trailer/submit.ejs');
+});
 
 app.listen(port, () => {
     console.log('Listening on PORT: 3000');

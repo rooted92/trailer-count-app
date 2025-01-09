@@ -1,0 +1,26 @@
+<%- include('../partials/head') %>
+    <%- include('../partials/navbar') %>
+
+        <div class="container mx-auto my-16">
+            <h1 class="text-3xl mb-4">Submit New Trailer Count</h1>
+            <form id="trailerForm" class="space-y-4">
+                <div>
+                    <label for="type" class="block text-sm font-medium text-gray-700">Trailer Type</label>
+                    <select id="type" name="type"
+                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        <option value="dryvan">Dryvan</option>
+                        <option value="reefer">Reefer</option>
+                        <option value="tanker">Tanker</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="cleanlinessStatus" class="block text-sm font-medium text-gray-700">Cleanliness</label>
+                    <select id="cleanlinessStatus" name="cleanlinessStatus"
+                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        <option value="dirty">Dirty</option>
+                        <option value="clean">Clean</option>
+                    </select>
+                </div>
+        </div>
+
+        <%- include('../partials/footer') %>
