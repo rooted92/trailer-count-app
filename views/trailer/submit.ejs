@@ -1,10 +1,11 @@
 <%- include('../partials/head') %>
     <%- include('../partials/navbar') %>
 
-        <div class="container mx-auto my-16">
-            <h1 class="text-3xl mb-4">Submit New Trailer Count</h1>
-            <form id="trailerForm" class="space-y-4">
-                <div>
+        <div class="container mx-auto my-16 flex flex-col justify-center items-center">
+            <h1 class="text-3xl mb-8">Trailer Count Form</h1>
+            <form id="trailerForm" class="space-y-4 max-w-lg w-full border border-gray-300 p-5 rounded-md shadow-md">
+                <div class="mb-1">
+                    <p class="text-gray-600 mb-2 self-start">Fill out the form to add a trailer to the list.</p>
                     <label for="type" class="block text-sm font-medium text-gray-700">Trailer Type</label>
                     <select id="type" name="type"
                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
@@ -13,7 +14,13 @@
                         <option value="tanker">Tanker</option>
                     </select>
                 </div>
-                <div>
+                <div class="mb-1">
+                    <label for="trailerNumber" class="block text-sm font-medium text-gray-700">Trailer Number</label>
+                    <input type="text" name="trailerNumber"
+                        class="w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        placeholder="Enter trailer number" />
+                </div>
+                <div class="mb-1">
                     <label for="cleanlinessStatus" class="block text-sm font-medium text-gray-700">Cleanliness</label>
                     <select id="cleanlinessStatus" name="cleanlinessStatus"
                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
@@ -21,6 +28,46 @@
                         <option value="clean">Clean</option>
                     </select>
                 </div>
+                <div class="mb-1">
+                    <label class="block text-sm font-medium text-gray-700">Load Status</label>
+                    <div class="mt-2 flex gap-4">
+                        <div class="flex items-center">
+                            <input id="empty" name="loadStatus" type="radio" value="empty"
+                                class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                            <label for="empty" class="ml-3 block text-sm font-medium text-gray-700">Empty</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input id="loaded" name="loadStatus" type="radio" value="loaded"
+                                class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                            <label for="loaded" class="ml-3 block text-sm font-medium text-gray-700">Loaded</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="fuelLevelContainer" class="mb-1 hidden">
+                    <label for="fuelLevel" class="block text-sm font-medium text-gray-700">Fuel Level</label>
+                    <input type="range" id="fuelLevel" name="fuelLevel" min="0" max="100" step="5"
+                        class="w-full focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <span id="fuelLevelValue" class="block text-sm font-medium text-gray-700 mt-2"></span>
+                </div>
+                <button type="button"
+                    class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-md transition-all ease-in capitalize text-white w-full">add
+                    trailer</button>
+            </form>
+
+            <script>
+                document.getElementById('type').addEventListener('change', function () {
+                    let fuelLevelContainer = document.getElementById('fuelLevelContainer');
+                    if (this.value === 'reefer') {
+                        fuelLevelContainer.classList.remove('hidden');
+                    } else {
+                        fuelLevelContainer.classList.add('hidden');
+                    }
+                });
+
+                document.getElementById('fuelLevel').addEventListener('input', function () {
+                    document.getElementById('fuelLevelValue').textContent = this.value + '%';
+                });
+            </script>
         </div>
 
         <%- include('../partials/footer') %>
