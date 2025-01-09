@@ -21,7 +21,18 @@ const trailerSchema = new mongoose.Schema({
 
 const Trailer = mongoose.model('Trailer', trailerSchema);
 
+const addOneTrailer = async () => {
+    const newTrailer = await Trailer.create({
+        type: 'Reefer',
+        cleanlinessStatus: 'Clean',
+        trailerNumber: 304,
+        loaded: true,
+        fuelLevel: 100,
+    });
+    // newTrailer.save();
+}
 
+// addOneTrailer();
 
 // {
 //     "_id": {
@@ -54,6 +65,19 @@ app.get('/', async (request, response) => {
     const allTrailers = await Trailer.find({});
     console.log(allTrailers)
     response.render('home.ejs', { allTrailers })
+})
+
+app.get('/trailer/:id', async (request, response) => {
+    const {id} = request.params;
+    try {
+        const foundTrailer = await Trailer.findById(id);
+        console.log(foundTrailer);
+    } catch(error) {
+        console.log(error);
+        throw error;
+    }
+    response.render('trailer/show.ejs', { foundTrailer });
+    console.log(id);
 })
 
 app.listen(port, () => {
