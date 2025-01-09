@@ -1,25 +1,40 @@
 import express from 'express';
-// import mongoose from 'mongoose';
-const app = express();
+import mongoose from 'mongoose';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import connectDB from './src/js/connectDB.js';
 
 const port = 3000;
+const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 connectDB();
 
-// const trailerSchema = new mongoose.Schema({
-//     type: String,
-//     cleanlinessStatus: String,
-//     trailerNumber: Number,
-//     loaded: Boolean,
-//     fuelLevel: Number
-// });
+const trailerSchema = new mongoose.Schema({
+    type: String,
+    cleanlinessStatus: String,
+    trailerNumber: Number,
+    loaded: Boolean,
+    fuelLevel: Number
+});
 
-// const Trailer = mongoose.model('Trailer', trailerSchema);
+const Trailer = mongoose.model('Trailer', trailerSchema);
+
+const allTrailers = await Trailer.find({trailerNumber: 304});
+console.log(allTrailers)
+
+// {
+//     "_id": {
+//       "$oid": "677ed4e91335c5dd6d67cb94"
+//     },
+//     "type": "Tanker",
+//     "cleanlinessStatus": "Dirty",
+//     "trailerNumber": 602,
+//     "loaded": false,
+//     "fuelLevel": 40,
+//     "__v": 0
+//   }
 
 // const addNewTrailers = async () => {
 //     try{
@@ -37,7 +52,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.get('/', (request, response) => {
-    response.render('home.ejs')
+    response.render('home.ejs', allTrailers)
 })
 
 app.listen(port, () => {
