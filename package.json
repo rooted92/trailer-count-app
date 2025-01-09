@@ -5,7 +5,8 @@
   "description": "Lite version of Luna Link, a web app that allows users to keep track of trailers in various locations.",
   "main": "index.js",
   "scripts": {
-    "build": "postcss ./src/css/tailwind.css -o ./public/css/styles.css"
+    "build": "postcss ./src/css/tailwind.css -o ./public/css/styles.css",
+    "watch": "postcss ./src/css/tailwind.css -o ./public/css/styles.css --watch"
   },
   "keywords": [],
   "author": "",

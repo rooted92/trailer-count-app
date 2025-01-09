@@ -21,8 +21,7 @@ const trailerSchema = new mongoose.Schema({
 
 const Trailer = mongoose.model('Trailer', trailerSchema);
 
-const allTrailers = await Trailer.find({trailerNumber: 304});
-console.log(allTrailers)
+
 
 // {
 //     "_id": {
@@ -51,8 +50,10 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.get('/', (request, response) => {
-    response.render('home.ejs', allTrailers)
+app.get('/', async (request, response) => {
+    const allTrailers = await Trailer.find({});
+    console.log(allTrailers)
+    response.render('home.ejs', { allTrailers })
 })
 
 app.listen(port, () => {
