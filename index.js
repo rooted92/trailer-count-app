@@ -70,13 +70,13 @@ app.get('/', async (request, response) => {
 app.get('/trailer/:id', async (request, response) => {
     const {id} = request.params;
     try {
-        const foundTrailer = await Trailer.findById(id);
-        console.log(foundTrailer);
+        const trailerDetails = await Trailer.findById(id);
+        console.log(trailerDetails);
+        response.render('trailer/show.ejs', { trailerDetails });
     } catch(error) {
         console.log(error);
         throw error;
     }
-    response.render('trailer/show.ejs', { foundTrailer });
     console.log(id);
 })
 
