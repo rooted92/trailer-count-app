@@ -6,8 +6,8 @@
             <form id="trailerForm" class="space-y-4 max-w-lg w-full border border-gray-300 p-5 rounded-md shadow-md">
                 <div class="mb-1">
                     <p class="text-gray-600 mb-2 self-start">Fill out the form to add a trailer to the list.</p>
-                    <label for="type" class="block text-sm font-medium text-gray-700">Trailer Type</label>
-                    <select id="type" name="type"
+                    <label for="trailerType" class="block text-sm font-medium text-gray-700">Trailer Type</label>
+                    <select id="trailerType" name="type"
                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         <option value="dryvan">Dryvan</option>
                         <option value="reefer">Reefer</option>
@@ -15,14 +15,14 @@
                     </select>
                 </div>
                 <div class="mb-1">
-                    <label for="trailerNumber" class="block text-sm font-medium text-gray-700">Trailer Number</label>
-                    <input type="text" name="trailerNumber"
+                    <label for="number" class="block text-sm font-medium text-gray-700">Trailer Number</label>
+                    <input type="text" name="number"
                         class="w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         placeholder="Enter trailer number" />
                 </div>
                 <div class="mb-1">
-                    <label for="cleanlinessStatus" class="block text-sm font-medium text-gray-700">Cleanliness</label>
-                    <select id="cleanlinessStatus" name="cleanlinessStatus"
+                    <label for="condition" class="block text-sm font-medium text-gray-700">Cleanliness</label>
+                    <select id="condition" name="condition"
                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         <option value="dirty">Dirty</option>
                         <option value="clean">Clean</option>
@@ -32,16 +32,22 @@
                     <label class="block text-sm font-medium text-gray-700">Load Status</label>
                     <div class="mt-2 flex gap-4">
                         <div class="flex items-center">
-                            <input id="empty" name="loadStatus" type="radio" value="empty"
+                            <input id="empty" name="loaded" type="radio" value="empty"
                                 class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
                             <label for="empty" class="ml-3 block text-sm font-medium text-gray-700">Empty</label>
                         </div>
                         <div class="flex items-center">
-                            <input id="loaded" name="loadStatus" type="radio" value="loaded"
+                            <input id="loaded" name="loaded" type="radio" value="loaded"
                                 class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
                             <label for="loaded" class="ml-3 block text-sm font-medium text-gray-700">Loaded</label>
                         </div>
                     </div>
+                </div>
+                <div class="mb-1">
+                    <label for="driverNotes" class="block text-sm font-medium text-gray-700">Driver Notes</label>
+                    <textarea id="driverNotes" name="driverNotes"
+                        class="w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        placeholder="Enter any notes here"></textarea>
                 </div>
                 <div id="fuelLevelContainer" class="mb-1 hidden transition-all ease-in">
                     <label for="fuelLevel" class="block text-sm font-medium text-gray-700">Fuel Level</label>
@@ -49,13 +55,16 @@
                         class="w-full focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                     <span id="fuelLevelValue" class="block text-sm font-medium text-gray-700 mt-2"></span>
                 </div>
-                <button type="button"
-                    class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-md transition-all ease-in capitalize text-white w-full">add
+                <div class="flex gap-4">
+                    <button type="button"
+                    class="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-md transition-all ease-in capitalize text-white">add
                     trailer</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-md text-white transition-all ease-in">Submit Trailer Count</button>
+                </div>    
             </form>
 
             <script>
-                document.getElementById('type').addEventListener('change', function () {
+                document.getElementById('trailerType').addEventListener('change', function () {
                     let fuelLevelContainer = document.getElementById('fuelLevelContainer');
                     if (this.value === 'reefer') {
                         fuelLevelContainer.classList.remove('hidden');
