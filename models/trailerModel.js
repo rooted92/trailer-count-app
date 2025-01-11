@@ -7,11 +7,11 @@ const trailerSchema = new mongoose.Schema({
         loweracse: true,
         enum: ['reefer', 'dryvan', 'tanker']
     },
-    trailerCondition: {
+    condition: {
         type: String,
         required: true
     },
-    trailerNumber: {
+    number: {
         type: Number,
         required: true
     },

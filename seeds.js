@@ -1,36 +1,36 @@
-import Trailer from "./models/trailerModel";
-import connectDB from "./connectDB";
+import Trailer from './models/trailerModel.js'
+import connectDB from './src/js/connectDB.js';
 
 connectDB();
 
 const sampleTrailers = [
-    { trailerType: 'reefer', trailerCondition: 'clean', trailerNumber: 201, loaded: true, fuelLevel: 75, currentLocation: 'Skikos Santa Rosa Yard' },
-    { trailerType: 'reefer', trailerCondition: 'dirty', trailerNumber: 302, loaded: false, fuelLevel: 50, currentLocation: 'Skikos Dirt Yard' },
-    { trailerType: 'reefer', trailerCondition: 'clean', trailerNumber: 403, loaded: true, fuelLevel: 80, currentLocation: 'Skikos American Canyon Yard' },
-    { trailerType: 'reefer', trailerCondition: 'dirty', trailerNumber: 204, loaded: false, fuelLevel: 60, currentLocation: 'Skikos Santa Rosa Yard' },
-    { trailerType: 'reefer', trailerCondition: 'clean', trailerNumber: 305, loaded: true, fuelLevel: 90, currentLocation: 'Skikos Dirt Yard' },
-    { trailerType: 'reefer', trailerCondition: 'dirty', trailerNumber: 406, loaded: false, fuelLevel: 40, currentLocation: 'Skikos American Canyon Yard' },
-    { trailerType: 'reefer', trailerCondition: 'clean', trailerNumber: 207, loaded: true, fuelLevel: 85, currentLocation: 'Skikos Santa Rosa Yard' },
-    { trailerType: 'reefer', trailerCondition: 'dirty', trailerNumber: 308, loaded: false, fuelLevel: 55, currentLocation: 'Skikos Dirt Yard' },
-    { trailerType: 'reefer', trailerCondition: 'clean', trailerNumber: 409, loaded: true, fuelLevel: 95, currentLocation: 'Skikos American Canyon Yard' },
-    { trailerType: 'dryvan', trailerCondition: 'clean', trailerNumber: 4801, loaded: true, currentLocation: 'Skikos Santa Rosa Yard' },
-    { trailerType: 'dryvan', trailerCondition: 'dirty', trailerNumber: 5002, loaded: false, currentLocation: 'Skikos Dirt Yard' },
-    { trailerType: 'dryvan', trailerCondition: 'clean', trailerNumber: 5303, loaded: true, currentLocation: 'Skikos American Canyon Yard' },
-    { trailerType: 'dryvan', trailerCondition: 'dirty', trailerNumber: 4804, loaded: false, currentLocation: 'Skikos Santa Rosa Yard' },
-    { trailerType: 'dryvan', trailerCondition: 'clean', trailerNumber: 5005, loaded: true, currentLocation: 'Skikos Dirt Yard' },
-    { trailerType: 'dryvan', trailerCondition: 'dirty', trailerNumber: 5306, loaded: false, currentLocation: 'Skikos American Canyon Yard' },
-    { trailerType: 'dryvan', trailerCondition: 'clean', trailerNumber: 4807, loaded: true, currentLocation: 'Skikos Santa Rosa Yard' },
-    { trailerType: 'dryvan', trailerCondition: 'dirty', trailerNumber: 5008, loaded: false, currentLocation: 'Skikos Dirt Yard' },
-    { trailerType: 'dryvan', trailerCondition: 'clean', trailerNumber: 5309, loaded: true, currentLocation: 'Skikos American Canyon Yard' },
-    { trailerType: 'tanker', trailerCondition: 'clean', trailerNumber: 601, loaded: true, currentLocation: 'Skikos Santa Rosa Yard' },
-    { trailerType: 'tanker', trailerCondition: 'dirty', trailerNumber: 702, loaded: false, currentLocation: 'Skikos Dirt Yard' },
-    { trailerType: 'tanker', trailerCondition: 'clean', trailerNumber: 803, loaded: true, currentLocation: 'Skikos American Canyon Yard' },
-    { trailerType: 'tanker', trailerCondition: 'dirty', trailerNumber: 604, loaded: false, currentLocation: 'Skikos Santa Rosa Yard' },
-    { trailerType: 'tanker', trailerCondition: 'clean', trailerNumber: 705, loaded: true, currentLocation: 'Skikos Dirt Yard' },
-    { trailerType: 'tanker', trailerCondition: 'dirty', trailerNumber: 806, loaded: false, currentLocation: 'Skikos American Canyon Yard' },
-    { trailerType: 'tanker', trailerCondition: 'clean', trailerNumber: 607, loaded: true, currentLocation: 'Skikos Santa Rosa Yard' },
-    { trailerType: 'tanker', trailerCondition: 'dirty', trailerNumber: 708, loaded: false, currentLocation: 'Skikos Dirt Yard' },
-    { trailerType: 'tanker', trailerCondition: 'clean', trailerNumber: 809, loaded: true, currentLocation: 'Skikos American Canyon Yard' },
+    { trailerType: 'reefer', condition: 'clean', number: 201, loaded: true, fuelLevel: 75, driverNotes: null, currentLocation: 'Skikos Santa Rosa Yard' },
+    { trailerType: 'reefer', condition: 'dirty', number: 302, loaded: false, fuelLevel: 50, driverNotes: null, currentLocation: 'Skikos Dirt Yard' },
+    { trailerType: 'reefer', condition: 'clean', number: 403, loaded: true, fuelLevel: 80, driverNotes: null, currentLocation: 'Skikos American Canyon Yard' },
+    { trailerType: 'reefer', condition: 'dirty', number: 204, loaded: false, fuelLevel: 60, driverNotes: "Door needs repair", currentLocation: 'Skikos Santa Rosa Yard' },
+    { trailerType: 'reefer', condition: 'clean', number: 305, loaded: true, fuelLevel: 90, driverNotes: null, currentLocation: 'Skikos Dirt Yard' },
+    { trailerType: 'reefer', condition: 'dirty', number: 406, loaded: false, fuelLevel: 40, driverNotes: null, currentLocation: 'Skikos American Canyon Yard' },
+    { trailerType: 'reefer', condition: 'clean', number: 207, loaded: true, fuelLevel: 85, driverNotes: null, currentLocation: 'Skikos Santa Rosa Yard' },
+    { trailerType: 'reefer', condition: 'dirty', number: 308, loaded: false, fuelLevel: 55, driverNotes: null, currentLocation: 'Skikos Dirt Yard' },
+    { trailerType: 'reefer', condition: 'clean', number: 409, loaded: true, fuelLevel: 95, driverNotes: "Flat tire on rear axle", currentLocation: 'Skikos American Canyon Yard' },
+    { trailerType: 'dryvan', condition: 'clean', number: 4801, loaded: true, fuelLevel: null, driverNotes: null, currentLocation: 'Skikos Santa Rosa Yard' },
+    { trailerType: 'dryvan', condition: 'dirty', number: 5002, loaded: false, fuelLevel: null, driverNotes: null, currentLocation: 'Skikos Dirt Yard' },
+    { trailerType: 'dryvan', condition: 'clean', number: 5303, loaded: true, fuelLevel: null, driverNotes: null, currentLocation: 'Skikos American Canyon Yard' },
+    { trailerType: 'dryvan', condition: 'dirty', number: 4804, loaded: false, fuelLevel: null, driverNotes: null, currentLocation: 'Skikos Santa Rosa Yard' },
+    { trailerType: 'dryvan', condition: 'clean', number: 5005, loaded: true, fuelLevel: null, driverNotes: "Missing mud flap", currentLocation: 'Skikos Dirt Yard' },
+    { trailerType: 'dryvan', condition: 'dirty', number: 5306, loaded: false, fuelLevel: null, driverNotes: null, currentLocation: 'Skikos American Canyon Yard' },
+    { trailerType: 'dryvan', condition: 'clean', number: 4807, loaded: true, fuelLevel: null, driverNotes: null, currentLocation: 'Skikos Santa Rosa Yard' },
+    { trailerType: 'dryvan', condition: 'dirty', number: 5008, loaded: false, fuelLevel: null, driverNotes: null, currentLocation: 'Skikos Dirt Yard' },
+    { trailerType: 'dryvan', condition: 'clean', number: 5309, loaded: true, fuelLevel: null, driverNotes: null, currentLocation: 'Skikos American Canyon Yard' },
+    { trailerType: 'tanker', condition: 'clean', number: 601, loaded: true, fuelLevel: null, driverNotes: null, currentLocation: 'Skikos Santa Rosa Yard' },
+    { trailerType: 'tanker', condition: 'dirty', number: 702, loaded: false, fuelLevel: null, driverNotes: null, currentLocation: 'Skikos Dirt Yard' },
+    { trailerType: 'tanker', condition: 'clean', number: 803, loaded: true, fuelLevel: null, driverNotes: "Leaking valve", currentLocation: 'Skikos American Canyon Yard' },
+    { trailerType: 'tanker', condition: 'dirty', number: 604, loaded: false, fuelLevel: null, driverNotes: null, currentLocation: 'Skikos Santa Rosa Yard' },
+    { trailerType: 'tanker', condition: 'clean', number: 705, loaded: true, fuelLevel: null, driverNotes: null, currentLocation: 'Skikos Dirt Yard' },
+    { trailerType: 'tanker', condition: 'dirty', number: 806, loaded: false, fuelLevel: null, driverNotes: null, currentLocation: 'Skikos American Canyon Yard' },
+    { trailerType: 'tanker', condition: 'clean', number: 607, loaded: true, fuelLevel: null, driverNotes: null, currentLocation: 'Skikos Santa Rosa Yard' },
+    { trailerType: 'tanker', condition: 'dirty', number: 708, loaded: false, fuelLevel: null, driverNotes: null, currentLocation: 'Skikos Dirt Yard' },
+    { trailerType: 'tanker', condition: 'clean', number: 809, loaded: true, fuelLevel: null, driverNotes: null, currentLocation: 'Skikos American Canyon Yard' },
 ];
 
 const seedDB = async () => {
@@ -38,3 +38,5 @@ const seedDB = async () => {
     await Trailer.insertMany(sampleTrailers);
     console.log('Database Seeded');
 };
+
+seedDB();
