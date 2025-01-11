@@ -1,29 +1,19 @@
-import express, { response } from 'express';
-import mongoose from 'mongoose';
+import express from 'express';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import connectDB from './src/js/connectDB.js';
+import Trailer from './models/trailerModel.js';
 
 const port = 3000;
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-connectDB();
-
-const trailerSchema = new mongoose.Schema({
-    type: String,
-    cleanlinessStatus: String,
-    trailerNumber: Number,
-    loaded: Boolean,
-    fuelLevel: Number
-});
-
-const Trailer = mongoose.model('Trailer', trailerSchema);
-
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+connectDB();
 
 app.get('/', async (request, response) => {
     const allTrailers = await Trailer.find({});
@@ -52,4 +42,4 @@ app.get('/submit-trailer-count', (request, response) => {
 
 app.listen(port, () => {
     console.log('Listening on PORT: 3000');
-});
+}); 

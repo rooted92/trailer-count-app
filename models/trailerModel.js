@@ -1,14 +1,13 @@
-import connectDB from "../src/js/connectDB";
 import mongoose from "mongoose";
 
-connectDB();
-
 const trailerSchema = new mongoose.Schema({
-    type: {
+    trailerType: {
         type: String,
-        required: true
+        required: true,
+        loweracse: true,
+        enum: ['reefer', 'dryvan', 'tanker']
     },
-    cleanlinessStatus: {
+    trailerCondition: {
         type: String,
         required: true
     },
@@ -22,6 +21,12 @@ const trailerSchema = new mongoose.Schema({
     },
     fuelLevel: {
         type: Number,
+    },
+    driverNotes: {
+        type: String
+    },
+    currentLocation: {
+        type: String,
     }
 });
 
