@@ -16,11 +16,10 @@ app.set('views', path.join(__dirname, 'views'));
 connectDB();
 
 app.get('/', async (request, response) => {
-    const allTrailers = await Trailer.find({});
-    response.render('home.ejs', { allTrailers })
+    response.render('home.ejs');
 })
 
-app.get('/all-trailers', async (request, response) => {
+app.get('/trailers', async (request, response) => {
     const allTrailers = await Trailer.find({});
     response.render('allTrailers.ejs', { allTrailers });
 });
@@ -29,6 +28,7 @@ app.get('/trailer/:id', async (request, response) => {
     const { id } = request.params;
     try {
         const trailerDetails = await Trailer.findById(id);
+        console.log(trailerDetails);
         response.render('trailer/show.ejs', { trailerDetails });
     } catch (error) {
         console.log(error);
