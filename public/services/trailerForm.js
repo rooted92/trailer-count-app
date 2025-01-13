@@ -26,16 +26,26 @@ addTrailerButton.addEventListener('click', function () {
         trailerType: document.getElementById('trailerType').value.toLowerCase(),
         condition: document.getElementById('condition').value,
         number: parseInt(document.getElementById('number').value, 10),
-        loaded: document.querySelector('input[name="loaded"]:checked')?.value === 'loaded',
-        driverNotes: document.getElementById('driverNotes').value || null,
+        loaded: document.querySelector('input[name="loaded"]:checked')?.value || null,
+        driverNotes: document.getElementById('driverNotes').value,
         fuelLevel: document.getElementById('fuelLevelContainer').classList.contains('hidden')
             ? null
             : parseInt(document.getElementById('fuelLevel').value, 10),
         currentLocation: document.getElementById('yardLocation').value,
     };
 
-    if (!trailerData.number) {
+    console.log(trailerData);
+
+    if (!trailerData.trailerType) {
+        errorMessage.textContent = 'Trailer type is required';
+        errorMessage.classList.remove('hidden');
+        return;
+    } else if (!trailerData.number) {
         errorMessage.textContent = 'Trailer number is required';
+        errorMessage.classList.remove('hidden');
+        return;
+    } else if (!trailerData.condition) {
+        errorMessage.textContent = 'Trailer condition is required';
         errorMessage.classList.remove('hidden');
         return;
     } else if (trailerData.trailerType === 'reefer' && !trailerData.fuelLevel) {
@@ -46,7 +56,13 @@ addTrailerButton.addEventListener('click', function () {
         errorMessage.textContent = 'Please specify if the trailer is loaded or empty';
         errorMessage.classList.remove('hidden');
         return;
+    } else if (!trailerData.currentLocation) {
+        errorMessage.textContent = 'Current location is required';
+        errorMessage.classList.remove('hidden');
+        return;
     }
+
+    trailerData.loaded = trailerData.loaded === 'loaded'
 
     trailers.push(trailerData);
 
@@ -54,7 +70,7 @@ addTrailerButton.addEventListener('click', function () {
     listItem.innerHTML = `
         <p>
             <span class="font-bold text-xl">${trailerData.number}</span> -
-            <span class="text-gray-600">${trailerData.type}</span>
+            <span class="text-gray-600 capitalize">${trailerData.trailerType}</span>
         </p>
         <div class="flex gap-2">
             <span class="mr-2 text-sm capitalize">${trailerData.condition}</span>
