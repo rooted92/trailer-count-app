@@ -41,6 +41,10 @@ app.get('/submit-trailer-count', (request, response) => {
     response.render('trailer/submit.ejs');
 });
 
+app.post('/api/trailers', async (request, response) => {
+    
+});
+
 app.listen(port, () => {
     console.log('Listening on PORT: 3000');
 }); 
