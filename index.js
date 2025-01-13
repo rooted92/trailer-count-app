@@ -42,7 +42,41 @@ app.get('/submit-trailer-count', (request, response) => {
 });
 
 app.post('/api/trailers', async (request, response) => {
-    
+    try {
+        const { trailers } = request.body;
+        if (!Array.isArray(trailers) || trailers.length === 0) {
+            return response.status(400).json({ message: 'No trailers provided' });
+        }
+
+        const trailerNumbers = trailers.map(trailer => trailer.number);
+        const existingTrailers = await Trailer.find({ number: { $in: trailerNumbers } });
+
+        const existingTrailersNumbers = existingTrailers.map(trailer => trailer.number);
+
+        const newTrailers = trailers.filter(trailer => !existingTrailersNumbers.includes(trailer.number));
+
+        if (newTrailers.length > 0) {
+            await Trailer.insertMany(newTrailers);
+        }
+
+        const trailerCount = trailers;
+        // Data that will be sent to email or text
+        console.log('Trailer Count to dispatch:', trailerCount);
+
+        response.status(201).json({
+            message: 'Trailers submitted successfully',
+            newTrailersAdded: newTrailers.length,
+            existingTrailers: existingTrailers.length,
+            trailerCount,
+        });
+    } catch (error) {
+        console.log(error);
+        response.status(500).json({ message: 'Failed to process Trailer Count' });
+    }
+});
+
+app.get('/success', (request, response) => {
+    response.render('success.ejs');
 });
 
 app.listen(port, () => {

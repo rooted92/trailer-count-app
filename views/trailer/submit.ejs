@@ -3,13 +3,15 @@
 
         <div class="container mx-auto my-16 flex flex-col justify-center items-center">
             <h1 class="text-3xl mb-8">Trailer Count Form</h1>
+            <p id="errorMessage"
+                class="px-4 py-2 rounded-md font-bold text-red-600 bg-red-200 border border-red-400 mb-4 hidden"></p>
             <form id="trailerForm" class="space-y-4 max-w-lg w-full border border-gray-300 p-5 rounded-md shadow-md">
                 <div class="mb-1">
                     <p class="text-gray-600 mb-2 self-start">Fill out the form to add a trailer to the list.</p>
                     <label for="trailerType" class="block text-sm font-medium text-gray-700">Trailer Type</label>
                     <select id="trailerType" name="type"
                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        <option value="dryvan">Dryvan</option>
+                        <option value="dryvan" selected="dryvan">Dryvan</option>
                         <option value="reefer">Reefer</option>
                         <option value="tanker">Tanker</option>
                     </select>

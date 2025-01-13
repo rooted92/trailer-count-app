@@ -1,11 +1,10 @@
-// src/js/trailerForm.js
-
 const trailers = [];
 const trailerForm = document.getElementById('trailerForm');
 const trailerListContainer = document.getElementById('trailerList');
 const trailersList = document.getElementById('trailers');
 const addTrailerButton = document.getElementById('addTrailer');
 const submitTrailersButton = document.getElementById('submitTrailers');
+const errorMessage = document.getElementById('errorMessage');
 
 document.getElementById('trailerType').addEventListener('change', function () {
     let fuelLevelContainer = document.getElementById('fuelLevelContainer');
@@ -35,14 +34,46 @@ addTrailerButton.addEventListener('click', function () {
         currentLocation: document.getElementById('yardLocation').value,
     };
 
+    if (!trailerData.number) {
+        errorMessage.textContent = 'Trailer number is required';
+        errorMessage.classList.remove('hidden');
+        return;
+    } else if (trailerData.trailerType === 'reefer' && !trailerData.fuelLevel) {
+        errorMessage.textContent = 'Fuel level is required for Reefer trailers';
+        errorMessage.classList.remove('hidden');
+        return;
+    } else if (!trailerData.loaded) {
+        errorMessage.textContent = 'Please specify if the trailer is loaded or empty';
+        errorMessage.classList.remove('hidden');
+        return;
+    }
+
     trailers.push(trailerData);
 
     const listItem = document.createElement('li');
-    listItem.textContent = `${trailerData.number}`;
+    listItem.innerHTML = `
+        <p>
+            <span class="font-bold text-xl">${trailerData.number}</span> -
+            <span class="text-gray-600">${trailerData.type}</span>
+        </p>
+        <div class="flex gap-2">
+            <span class="mr-2 text-sm capitalize">${trailerData.condition}</span>
+            <span class="mr-2 text-sm">${trailerData.loaded ? 'Loaded' : 'Empty'}</span>
+        </div>
+
+        <p class="mr-2">${trailerData.currentLocation}</p>
+        <div class="flex gap-4">
+            <button class="text-red-600 col-span-1 hover:">Remove</button>
+            <button class="text-slate-700">Edit</button>
+        </div>
+    `;
     listItem.className = 'list-none px-4 py-2 font-semibold bg-slate-100 border border-gray-300 rounded-md';
     trailersList.appendChild(listItem);
 
     trailerListContainer.classList.remove('hidden');
+
+    errorMessage.textContent = '';
+    errorMessage.classList.add('hidden');
 
     trailerForm.reset();
     document.getElementById('yardLocation').value = yardLocation;
@@ -51,18 +82,29 @@ addTrailerButton.addEventListener('click', function () {
 
 submitTrailersButton.addEventListener('click', async function (e) {
     e.preventDefault();
-    const response = await fetch('/api/trailers', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ trailers }),
-    });
 
-    if (response.ok) {
-        alert('Trailers submitted successfully!');
-        trailers.length = 0;
-        trailersList.innerHTML = '';
-        trailerListContainer.classList.add('hidden');
-    } else {
-        alert('Error submitting trailers');
+    try {
+        const response = await fetch('/api/trailers', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ trailers }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            trailers.length = 0;
+            trailersList.innerHTML = '';
+            trailerListContainer.classList.add('hidden');
+            errorMessage.textContent = '';
+            errorMessage.classList.add('hidden');
+            window.location.href = '/success';
+        } else {
+            errorMessage.textContent = data.message;
+            errorMessage.classList.remove('hidden');
+        }
+    } catch (error) {
+        errorMessage.textContent = error.message;
+        errorMessage.classList.remove('hidden');
     }
 });
