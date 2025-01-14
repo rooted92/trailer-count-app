@@ -65,6 +65,7 @@ addTrailerButton.addEventListener('click', function () {
     trailerData.loaded = trailerData.loaded === 'loaded'
 
     trailers.push(trailerData);
+    console.log(trailers);
 
     const listItem = document.createElement('li');
     listItem.innerHTML = `
@@ -79,12 +80,24 @@ addTrailerButton.addEventListener('click', function () {
 
         <p class="mr-2">${trailerData.currentLocation}</p>
         <div class="flex gap-4">
-            <button class="text-red-600 col-span-1 hover:">Remove</button>
+            <button class="text-red-600">Remove</button>
             <button class="text-slate-700">Edit</button>
         </div>
     `;
     listItem.className = 'list-none px-4 py-2 font-semibold bg-slate-100 border border-gray-300 rounded-md';
     trailersList.appendChild(listItem);
+
+    listItem.querySelector('.text-red-600').addEventListener('click', function () {
+        const index = trailers.findIndex(trailer => trailer.number = trailerData.number);
+        if (index > -1) {
+            trailers.splice(index, 1);
+            listItem.remove();
+        }
+        if (trailers.length === 0) {
+            trailerListContainer.classList.add('hidden');
+        }
+        console.log(trailers);
+    });
 
     trailerListContainer.classList.remove('hidden');
 
