@@ -99,6 +99,23 @@ addTrailerButton.addEventListener('click', function () {
         console.log(trailers);
     });
 
+    listItem.querySelector('.text-slate-700').addEventListener('click', function () {
+        document.getElementById('trailerType').value = trailerData.trailerType;
+        document.getElementById('condition').value = trailerData.condition;
+        document.getElementById('number').value = trailerData.number;
+        document.querySelector(`input[name="loaded"][value="${trailerData.loaded ? 'loaded' : 'empty'}"]`).checked = true;
+        document.getElementById('driverNotes').value = trailerData.driverNotes || '';
+        document.getElementById('fuelLevel').value = trailerData.fuelLevel || 0;
+        document.getElementById('fuelLevelValue').textContent = trailerData.fuelLevel ? trailerData.fuelLevel + '%' : '';
+        document.getElementById('yardLocation').value = trailerData.currentLocation;
+
+        const index = trailers.findIndex(t => t.number === trailerData.number);
+        if (index > -1) {
+            trailers.splice(index, 1);
+            listItem.remove();
+        }
+    });
+
     trailerListContainer.classList.remove('hidden');
 
     errorMessage.textContent = '';
