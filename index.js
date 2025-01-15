@@ -51,12 +51,34 @@ app.post('/api/trailers', async (request, response) => {
         const trailerNumbers = trailers.map(trailer => trailer.number);
         const existingTrailers = await Trailer.find({ number: { $in: trailerNumbers } });
 
+        // await Trailer.updateMany({});
+
         const existingTrailersNumbers = existingTrailers.map(trailer => trailer.number);
 
         const newTrailers = trailers.filter(trailer => !existingTrailersNumbers.includes(trailer.number));
+        const trailersToUpdate = trailers.filter(trailer => existingTrailersNumbers.includes(trailer.number));
 
         if (newTrailers.length > 0) {
             await Trailer.insertMany(newTrailers);
+        }
+
+        if (trailersToUpdate.length > 0) {
+            const bulkOperations = trailersToUpdate.map(trailer => ({
+                updateOne: {
+                    filter: { number: trailer.number }, // Match by trailer number
+                    update: {
+                        $set: {
+                            condition: trailer.condition,
+                            fuelLevel: trailer.trailerType === 'reefer' ? trailer.fuelLevel : null,
+                            loaded: trailer.loaded,
+                            driverNotes: trailer.driverNotes || null,
+                            currentLocation: trailer.currentLocation,
+                        },
+                    },
+                },
+            }));
+
+            await Trailer.bulkWrite(bulkOperations);
         }
 
         const trailerCount = trailers;
@@ -66,7 +88,7 @@ app.post('/api/trailers', async (request, response) => {
         response.status(201).json({
             message: 'Trailers submitted successfully',
             newTrailersAdded: newTrailers.length,
-            existingTrailers: existingTrailers.length,
+            updatedTrailers: trailersToUpdate.length,
             trailerCount,
         });
     } catch (error) {
