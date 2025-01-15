@@ -79,6 +79,11 @@ app.get('/success', (request, response) => {
     response.render('success.ejs');
 });
 
+app.get('/api/all-trailers', async (request, response) => {
+    const allTrailersData = await Trailer.find({});
+    response.send(allTrailersData);
+});
+
 app.listen(port, () => {
     console.log('Listening on PORT: 3000');
 }); 
