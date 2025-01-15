@@ -13,7 +13,7 @@ trailerType.addEventListener('change', async (e) => {
     } else if (type === 'tankers') {
 
     } else {
-        
+
     }
 
 });
@@ -35,6 +35,12 @@ async function getTankers() {
     const response = await fetch('/api/all-trailers');
     const data = await response.json();
     return
+}
+
+async function getFilteredTrailers(typeOfTrailer = 'all') {
+    const response = await fetch('/api/all-trailers');
+    const trailers = await response.json();
+    return typeOfTrailer === 'all' ? trailers : trailers.filter(trailer => trailer.trailerType === typeOfTrailer)
 }
 
 async function buildTrailerListItems(trailerArray) {
