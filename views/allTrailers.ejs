@@ -4,20 +4,37 @@
     <div class="container mx-auto my-16">
       <h1 class="text-3xl font-semibold">All Trailers</h1>
 
-      <div class="my-4 max-w-xs">
-        <label for="trailerType" class="block text-sm font-medium text-gray-700">Filter by Trailer Type:</label>
-        <select id="trailerType" name="trailerType" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-          <option value="all" selected>All</option>
-          <option value="dryvan">Dry Van</option>
-          <option value="reefer">Reefer</option>
-          <option value="tanker">Tanker</option>
-        </select>
+      <div class="flex gap-4">
+        <div class="my-4">
+          <label for="trailerType" class="block text-sm font-medium text-gray-700">Filter by Trailer Type:</label>
+          <select id="trailerType" name="trailerType"
+            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+            <option value="all" selected>All</option>
+            <option value="dryvan">Dry Van</option>
+            <option value="reefer">Reefer</option>
+            <option value="tanker">Tanker</option>
+          </select>
+        </div>
+
+        <div class="my-4">
+          <label for="trailerLocation" class="block text-sm font-medium text-gray-700">Filter by Location:</label>
+          <select id="trailerLocation" name="trailerLocation"
+            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+            <option value="all" selected>All</option>
+            <option value="Santa Rosa Front Yard">Santa Rosa Front Yard</option>
+            <option value="reefer">Santa Rosa Dirt Yard</option>
+            <option value="tanker">American Canyon Yard</option>
+            <option value="McClellan Yard">McCllelan Yard</option>
+          </select>
+        </div>
       </div>
+
 
       <div id="allTrailersList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
         <% allTrailers.forEach(function(trailer) { %>
           <a href="/trailer/<%= trailer._id %>" rel="noopener noreferrer">
-            <div class="bg-white hover:bg-slate-100 hover:scale-105 hover:scale shadow-md rounded-lg overflow-hidden transition-all ease-in">
+            <div
+              class="bg-white hover:bg-slate-100 hover:scale-105 hover:scale shadow-md rounded-lg overflow-hidden transition-all ease-in">
               <div class="p-4">
                 <h2 class="text-xl font-bold">
                   <%= trailer.number %>
