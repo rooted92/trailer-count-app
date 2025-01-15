@@ -3,7 +3,7 @@ const trailerType = document.getElementById('trailerType');
 
 trailerType.addEventListener('change', async (e) => {
     const type = e.target.value;
-    console.log(type);
+    
     if (type === 'dryvan') {
         trailerList.innerHTML = '';
         const dryvans = await getFilteredTrailers(type);
@@ -11,17 +11,14 @@ trailerType.addEventListener('change', async (e) => {
     } else if (type === 'reefer') {
         trailerList.innerHTML = '';
         const reefers = await getFilteredTrailers(type);
-        console.log(reefers)
         buildTrailerListItems(reefers);
     } else if (type === 'tanker') {
         trailerList.innerHTML = '';
         const tankers = await getFilteredTrailers(type);
-        console.log(tankers);
         buildTrailerListItems(tankers);
     } else {
         trailerList.innerHTML = '';
         const allTrailers = await getFilteredTrailers();
-        console.log(allTrailers);
         buildTrailerListItems(allTrailers);
     }
 
@@ -30,7 +27,6 @@ trailerType.addEventListener('change', async (e) => {
 async function getFilteredTrailers(typeOfTrailer = 'all') {
     const response = await fetch('/api/all-trailers');
     const trailers = await response.json();
-    console.log('Type value in filtered trailers function: ', typeOfTrailer);
     return typeOfTrailer === 'all' ? trailers : trailers.filter(trailer => trailer.trailerType === typeOfTrailer)
 }
 
