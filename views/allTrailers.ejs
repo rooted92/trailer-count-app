@@ -14,7 +14,7 @@
         </select>
       </div>
 
-      <div id="trailerList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
+      <div id="allTrailersList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
         <% allTrailers.forEach(function(trailer) { %>
           <a href="/trailer/<%= trailer._id %>" rel="noopener noreferrer">
             <div class="bg-white hover:bg-slate-100 hover:scale-105 hover:scale shadow-md rounded-lg overflow-hidden transition-all ease-in">

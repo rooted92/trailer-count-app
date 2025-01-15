@@ -106,6 +106,10 @@ app.get('/api/all-trailers', async (request, response) => {
     response.send(allTrailersData);
 });
 
+app.get('/about', (request, response) => {
+    response.render('about.ejs');
+});
+
 app.listen(port, () => {
     console.log('Listening on PORT: 3000');
 }); 

@@ -1,6 +1,6 @@
 const trailers = [];
 const trailerForm = document.getElementById('trailerForm');
-const trailerListContainer = document.getElementById('trailerList');
+const trailerListContainer = document.getElementById('submitTrailersList');
 const trailersList = document.getElementById('trailers');
 const addTrailerButton = document.getElementById('addTrailer');
 const submitTrailersButton = document.getElementById('submitTrailers');

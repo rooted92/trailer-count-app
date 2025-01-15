@@ -1,4 +1,4 @@
-const trailerList = document.getElementById('trailerList');
+const trailerList = document.getElementById('allTrailersList');
 const trailerType = document.getElementById('trailerType');
 
 trailerType.addEventListener('change', async (e) => {
