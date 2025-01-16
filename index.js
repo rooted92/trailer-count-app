@@ -106,6 +106,12 @@ app.get('/api/all-trailers', async (request, response) => {
     response.send(allTrailersData);
 });
 
+app.get('/api/all-trailers/:location', async (request, response) => {
+    const { location } = request.params;
+    const trailersByLocation = await Trailer.find({ currentLocation: location });
+    response.send(trailersByLocation);
+});
+
 app.get('/about', (request, response) => {
     response.render('about.ejs');
 });
