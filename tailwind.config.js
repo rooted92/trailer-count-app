@@ -5,11 +5,12 @@ module.exports = {
     "./public/js/**/*.js", // Include any custom JavaScript files
   ],
   theme: {
-    extend: {},
-  },
-  screens: {
-    xs: "470px",
-    tiny: "320px",
+    extend: {
+      screens: {
+        xs: "470px",
+        tiny: "320px",
+      },
+    },
   },
   plugins: [],
 };
