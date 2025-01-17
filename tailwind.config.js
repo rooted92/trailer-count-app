@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const { addDynamicIconSelectors } = require('@iconify/tailwind');
+
 module.exports = {
   content: [
     "./views/**/*.ejs", // Include all EJS templates
@@ -12,5 +14,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [addDynamicIconSelectors()],
 };
